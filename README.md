@@ -2,6 +2,10 @@
 
 A simple calculator built with **HTML**, **CSS**, and **JavaScript**. It performs basic arithmetic operations through an interactive user interface and was created as part of **The Odin Project** curriculum.
 
+## Live Demo
+
+**Link**: https://mayn18.github.io/Basic-Calculator/
+
 ## Features
 
 * Basic arithmetic operations (`+`, `-`, `×`, `÷`)
@@ -16,9 +20,11 @@ A simple calculator built with **HTML**, **CSS**, and **JavaScript**. It perform
 * CSS3
 * JavaScript (Vanilla JS)
 
-## Live Demo
+## Preview
 
-**Link**: https://mayn18.github.io/Basic-Calculator/
+![Calculator Screenshot](Media/screenshot.png)
+
+---
 
 ## Project Source
 
