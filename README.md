@@ -16,6 +16,10 @@ A simple calculator built with **HTML**, **CSS**, and **JavaScript**. It perform
 * CSS3
 * JavaScript (Vanilla JS)
 
+## Live Demo
+
+**Link**: https://mayn18.github.io/Basic-Calculator/
+
 ## Project Source
 
 This project was completed as part of **The Odin Project** Foundations curriculum.
