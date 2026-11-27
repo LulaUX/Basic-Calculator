@@ -6,6 +6,46 @@ const equalsBtn = document.querySelector("#btn-equals");
 const operators = "+-/*"
 const numbers = "1234567890. "
 
+const historyList = document.querySelector("#history-list");
+const clearHistoryBtn = document.querySelector("#btn-clear-history");
+const historyKey = "calculator-history";
+let operationHistory = [];
+
+try {
+    const savedHistory = JSON.parse(localStorage.getItem(historyKey));
+    if (Array.isArray(savedHistory)) {
+        operationHistory = savedHistory.filter(item => typeof item === "string").slice(0, 5);
+    }
+} catch {
+    // The calculator still works when browser storage is unavailable.
+}
+
+function renderHistory() {
+    historyList.replaceChildren();
+    for (const operation of operationHistory) {
+        const item = document.createElement("li");
+        item.textContent = operation;
+        historyList.appendChild(item);
+    }
+    clearHistoryBtn.disabled = operationHistory.length === 0;
+}
+
+function saveHistory() {
+    try {
+        localStorage.setItem(historyKey, JSON.stringify(operationHistory));
+    } catch {
+        // Keep the current session's history if storage cannot be written.
+    }
+    renderHistory();
+}
+
+clearHistoryBtn.addEventListener("click", () => {
+    operationHistory = [];
+    saveHistory();
+});
+
+renderHistory();
+
 console.log(numberButtons, operatorButtons, functionButtons);
 
 input.addEventListener("keydown", (event) => {
@@ -126,6 +166,15 @@ function calculate(operation) {
                 break;
         }
         input.value = result;
+    }
+
+    const hasValidOperands = operationArr.every((part, index) =>
+        index % 2 === 1 || (part !== "" && Number.isFinite(Number(part)))
+    );
+    if (operationArr.length > 1 && hasValidOperands && Number.isFinite(result)) {
+        operationHistory.unshift(`${operation.trim()} = ${result}`);
+        operationHistory = operationHistory.slice(0, 5);
+        saveHistory();
     }
 
     return result;
