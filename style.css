@@ -37,6 +37,25 @@ body {
 
 }
 
+.history {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+    color: #d0d0d0;
+    font-size: 20px;
+}
+
+.history h2 {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+.history ol {
+    list-style: none;
+    overflow-wrap: anywhere;
+    margin: 5px 0;
+}
+
 .view-port {
     display: flex;
     height: 100%;
